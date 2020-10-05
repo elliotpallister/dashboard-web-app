@@ -1,10 +1,12 @@
-import  React, { Component } from 'react'
+import  React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import SearchInput from '../search-input/search-input';
+import AddIcon from '@material-ui/icons/Add';
 
 import './table.scss';
 
-const LOCATION_HEADERS = ['ID', 'LOCATION NAME', 'ADDRESS', 'STATUS']
+
 
 class Table extends Component {
   constructor(props) {
@@ -12,20 +14,6 @@ class Table extends Component {
 
     this.state = {
       searchfield: '',
-      locations: [
-        {
-          id: '1',
-          locationName: '53 Degrees',
-          address: '116 Leeds Road',
-          status: '1 online'
-        },
-        {
-          id: '2',
-          locationName: 'Selfridges',
-          address: '336 Leeds Road',
-          status: '1 online'
-        }
-      ]
     }
   }
 
@@ -62,13 +50,12 @@ class Table extends Component {
   renderTableData = data => {
     const filteredData = this.filterData(data)
     return filteredData.map((row, index) => {
-      const { id, locationName, address, status } = row;
+      const formattedRow = Object.values(row);
       return(
         <tr className='row' key={index}>
-          <td>{id}</td>
-          <td>{locationName}</td>
-          <td>{address}</td>
-          <td>{status}</td>
+          {formattedRow.map((item, index) => {
+            return <td key={index}>{item}</td>
+          })}
         </tr>
       )
     })
@@ -78,7 +65,7 @@ class Table extends Component {
     return(
       <div className='table'>
         <div className='top'>
-          <div className='title'>Locations</div>
+          <div className='title'>{this.props.title}</div>
           <SearchInput 
             name='searchfield'
             value={this.state.searchfield}
@@ -86,13 +73,17 @@ class Table extends Component {
             onChange={this.handleChange}
             style={{ marginLeft: '3rem' }}
           />
+          <Link to='/dashboard/addlocation' delay={150} > 
+            <AddIcon className='icon' />
+            { this.props.title === 'Locations' ? 'Add Location' : 'Add Unit'} 
+          </Link>
         </div>
         <table>
           <thead>
-           {this.renderTableHeaders(LOCATION_HEADERS)}
+           {this.renderTableHeaders(this.props.headers)}
           </thead>
           <tbody>
-            {this.renderTableData(this.state.locations)}
+            {this.renderTableData(this.props.data)}
           </tbody>
         </table>
       </div>
