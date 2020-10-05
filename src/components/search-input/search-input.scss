@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+.search-input {
+  display: flex;
+  background-color: #212121;
+  border-radius: 5px;
+  align-items: center;
+  padding-right: 0.5rem;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.search-icon {
+  padding-left: 0.5rem;
+}
+
+input {
+  height: 2.5rem;
+  border: none;
+  font-size: 16px;
+  background-color: #212121;
+  color: white;
+  padding-left: 0.5rem;
+  position: relative;
+  font-family: 'Work Sans', sans-serif;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+}

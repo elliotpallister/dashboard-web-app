@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+.dashboard {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  font-family: 'Work Sans', sans-serif;
+
+  .side-bar {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .content {
+    width: 75%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .container-1 {
+      grid-column: span 2;
+    }
+  }
+}
