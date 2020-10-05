@@ -33,8 +33,8 @@ class Table extends Component {
   filterData = data => {
     const filteredData = data.filter(item => {
       let returnItem = false;
-      const rowValues = Object.values(item);
-      rowValues.pop()
+      const rowValues = Object.values(item).splice(0, 3);
+      console.log(rowValues)
       for (let i=0; i< rowValues.length; i++){
         if (rowValues[i].toLowerCase().includes(this.state.searchfield.toLowerCase())) {
           returnItem = true;
@@ -50,7 +50,7 @@ class Table extends Component {
   renderTableData = data => {
     const filteredData = this.filterData(data)
     return filteredData.map((row, index) => {
-      const formattedRow = Object.values(row);
+      const formattedRow = Object.values(row).splice(0, 4);
       return(
         <tr className='row' key={index}>
           {formattedRow.map((item, index) => {

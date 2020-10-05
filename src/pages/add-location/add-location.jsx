@@ -204,7 +204,7 @@ class AddLocation extends Component {
       body: JSON.stringify(postPackage)
     })
 
-    setTimeout(this.props.history.push('/dashboard'), 200)
+    setTimeout(this.props.history.push('/'), 200)
   }
 
   handleSubmit = event => {

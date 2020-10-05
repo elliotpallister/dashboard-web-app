@@ -14,21 +14,20 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      locations: [
-        {
-          id: '1',
-          locationName: '53 Degrees',
-          address: '116 Leeds Road, HG2 8HH, Harrogate, North Yorkshire, United Kingdom',
-          status: '1 online'
-        },
-        {
-          id: '2',
-          locationName: 'Selfridges',
-          address: '120C Duchy Road, HG1 2HE, Harrogate, North Yorkshire, United Kingdom',
-          status: '1 online'
-        }
-      ]
+      locations: []
     }
+  }
+
+  componentDidMount() {
+    console.log(this.state)
+    fetch('http://localhost:3000/dashboard', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        currentUser: this.props.currentUser,
+      })
+    }).then(response => response.json())
+      .then(data => this.setState({ locations: data}, () => console.log(this.state)))
   }
 
   render () {
