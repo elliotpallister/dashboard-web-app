@@ -1,0 +1,99 @@
+.units {
+  justify-content: flex-start;
+
+  .text {
+    display: flex;
+    justify-content: flex-start;
+    white-space: nowrap;
+    grid-column: span 4;
+    padding-left: 0.2rem;
+  }
+
+  .input-units {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: 3fr 6fr 2fr 3fr;
+    width: 80%;
+    grid-gap: 0.7rem;
+
+    button {
+      height: 2.5rem;
+      font-size: 100%;
+      border: none;
+      white-space: nowrap;
+      background-color: #CA5441;
+      color: white;
+      font-weight: bold;
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      color: rgb(36, 36, 36);
+      transition: color 0.4s ease;
+      cursor: pointer;
+    }
+
+    button:focus {
+      outline: none;
+      border: none;
+    }
+  }
+
+  .display-units {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 80%;
+
+    .headers {
+      display: grid;
+      grid-template-columns: 3fr 6fr 2fr 3fr;
+      grid-gap: 0.7rem;
+      margin-bottom: 0.15rem;
+      border-bottom: 0.2rem #212121 solid;
+
+      .header {
+        grid-column: span 1;
+        padding-left: 0.5rem;
+        font-size: 12px;
+        justify-self: start;
+        padding-bottom: 0.5rem;
+        color: gray;
+      }
+    }
+
+    .unit {
+      display: grid;
+      grid-template-columns: 3fr 6fr 2fr 3fr;
+      grid-gap: 0.7rem;
+      background-color: #212121;
+      height: 2rem;
+      margin-bottom: 0.2rem;
+      border-radius: 5px;
+  
+      .text {
+        grid-column: span 1;
+        padding-left: 0.5rem;
+        font-size: 14px;
+        align-self: center;
+      }
+
+      .clear-icon {
+        align-self: center;
+        justify-self: center;
+      }
+
+      .clear-icon:hover {
+        cursor: pointer;
+      }
+    }
+
+    .unit:hover {
+      background-color: #171717;
+      transition: background-color 0.5s ease;
+    }
+  }
+
+}

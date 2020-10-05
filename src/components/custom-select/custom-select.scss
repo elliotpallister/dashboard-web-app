@@ -1,0 +1,24 @@
+.form-select {
+  display: flex;
+  background-color: #212121;
+  border-radius: 5px;
+  align-items: center;
+  width: 100%;
+}
+
+select {
+  height: 2.5rem;
+  width: 95%;
+  border: none;
+  font-size: 16px;
+  background-color: #212121;
+  color: white;
+  padding-left: 0.5rem;
+  position: relative;
+  border-radius: 5px;
+}
+
+select:focus {
+  outline: none;
+  border: none;
+}
