@@ -1,12 +1,10 @@
 import  React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import SearchInput from '../search-input/search-input';
 import AddIcon from '@material-ui/icons/Add';
 
 import './table.scss';
-
-
 
 class Table extends Component {
   constructor(props) {
@@ -50,7 +48,8 @@ class Table extends Component {
   renderTableData = data => {
     const filteredData = this.filterData(data)
     return filteredData.map((row, index) => {
-      const formattedRow = Object.values(row).splice(0, 4);
+      let formattedRow = Object.values(row);
+      this.props.title === 'Locations' ? formattedRow.splice(4, 2) : formattedRow.splice(4,2);
       return(
         <tr className='row' key={index}>
           {formattedRow.map((item, index) => {
@@ -91,4 +90,4 @@ class Table extends Component {
   }
 }
 
-export default Table;
+export default withRouter(Table);

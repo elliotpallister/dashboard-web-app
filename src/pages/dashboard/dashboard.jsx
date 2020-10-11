@@ -2,32 +2,37 @@ import React, { Component } from 'react';
 
 import Table from '../../components/table/table';
 import SideBar from '../../components/side-bar/side-bar';
+import DataContainer from '../../components/data-container/data-container';
 
 import './dashboard.scss';
-
-const LOCATION_HEADERS = ['ID', 'LOCATION NAME', 'ADDRESS', 'STATUS']
-// const UNIT_HEADERS = ['SERIAL #', 'LOCATION', 'MODEL TYPE', 'CAPACITY', 'STATUS']
-
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      locations: []
+      locations: [
+        {
+          locationId: '1',
+          locationName: '53 Degrees',
+          address: '116 Leeds Road, HG2 8HH, Harrogate, North Yorkshire, United Kingdom',
+          status: '10 online'
+        },
+        {
+          locationId: '2',
+          locationName: 'Selfridges',
+          address: '120 Duchy Road, HG1 2HE, Harrogate, North Yorkshire, United Kingdom',
+          status: '5 online'
+        },
+        {
+          locationId: '3',
+          locationName: 'Essential Healthcare',
+          address: 'Essential Healthcare UK, Essential Enterprise Villiage, WF17 9BN, Birstall, West Yorkshire, United Kingdom',
+          status: '12 online'
+        },
+      ],
+      selectedLocation: null,
     }
-  }
-
-  componentDidMount() {
-    console.log(this.state)
-    fetch('http://localhost:3000/dashboard', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        currentUser: this.props.currentUser,
-      })
-    }).then(response => response.json())
-      .then(data => this.setState({ locations: data}, () => console.log(this.state)))
   }
 
   render () {
@@ -36,17 +41,29 @@ class Dashboard extends Component {
         <div className='side-bar'>
           <SideBar />
         </div>
-        <div className='content'>
-          <div className='container-1'>
-            <Table 
-              title='Locations'
-              data={this.state.locations}
-              headers={LOCATION_HEADERS}
-            />
-          </div>
-          <div className='container-2'></div>
-          <div className='container-2'></div>
-        </div> 
+        <div className='content-dashboard-outer'>
+          <div className='content-dashboard-inner'>
+            <div className='overview-container'>
+              <DataContainer
+                colour='blue'
+                number={this.state.locations.length}
+                text='Locations'
+              />
+              <DataContainer
+                colour='blue'
+                number={45}
+                text='Units'
+              />
+            </div>
+            <div className='table-container'>
+              <Table 
+                title='Locations'
+                data={this.state.locations}
+                headers={['ID', 'LOCATION NAME', 'ADDRESS', 'STATUS']}
+              />
+            </div>
+          </div> 
+        </div>
       </div>
     );
   }
