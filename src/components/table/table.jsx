@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import SearchInput from '../search-input/search-input';
 import AddIcon from '@material-ui/icons/Add';
+import WarningIcon from '@material-ui/icons/Warning';
 
 import './table.scss';
 
@@ -14,6 +15,7 @@ class Table extends Component {
       searchfield: '',
     }
   }
+
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -28,13 +30,13 @@ class Table extends Component {
       </tr>)
   }
 
+
   filterData = data => {
     const filteredData = data.filter(item => {
       let returnItem = false;
-      const rowValues = Object.values(item).splice(0, 3);
-      console.log(rowValues)
-      for (let i=0; i< rowValues.length; i++){
-        if (rowValues[i].toLowerCase().includes(this.state.searchfield.toLowerCase())) {
+      let valuesToCheck = Object.values(item).splice(0, 3);
+      for (let i=0; i< valuesToCheck.length; i++){
+        if (valuesToCheck[i].toLowerCase().includes(this.state.searchfield.toLowerCase())) {
           returnItem = true;
         }
       }
@@ -45,20 +47,22 @@ class Table extends Component {
     return filteredData;
   }
 
+
   renderTableData = data => {
     const filteredData = this.filterData(data)
     return filteredData.map((row, index) => {
-      let formattedRow = Object.values(row);
-      this.props.title === 'Locations' ? formattedRow.splice(4, 2) : formattedRow.splice(4,2);
       return(
-        <tr className='row' key={index}>
-          {formattedRow.map((item, index) => {
-            return <td key={index}>{item}</td>
+        <tr className={`row ${row[0]}`} key={index}>
+          {row.map((item, index) => {
+            return (
+             item === 'error' ? <td key={index}> <WarningIcon fontSize='small' /> </td>: <td key={index}>{item}</td>
+            );
           })}
         </tr>
       )
     })
   }
+
 
   render() {
     return(

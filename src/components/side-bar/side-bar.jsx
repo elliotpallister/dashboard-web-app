@@ -7,12 +7,12 @@ import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 
 import './side-bar.scss';
 
-function SideBar() {
+function SideBar(props) {
   return (
     <div className='side-bar-inner'>
       <div className='account'>
         <AccountBoxIcon className='icon' /> 
-        <div className='text'> Hello, Elliot </div>
+        <div className='text'> {`Hello, ${props.name}`} </div>
       </div>
       <div className='selector'>
         <div className='option selected'>

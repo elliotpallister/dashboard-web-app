@@ -63,7 +63,18 @@
 
     tbody tr:hover {
       background-color: #00000040;
+      transition: background-color 0.5s ease;
       cursor: pointer;
+    }
+
+    .error {
+      background-color: #cc19193d;
+    }
+
+    .error:hover {
+      background-color:  #a716162c;
+      cursor: pointer;
+      transition: background-color 0.5s ease;
     }
   }
 }
