@@ -1,7 +1,7 @@
 import  React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-import SearchInput from '../search-input/search-input';
+import SearchInput from '../custom-input-components/search-input/search-input';
 import AddIcon from '@material-ui/icons/Add';
 import WarningIcon from '@material-ui/icons/Warning';
 

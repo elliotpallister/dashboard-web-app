@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 
 import Dashboard from './pages/dashboard/dashboard';
+import AddLocation from './pages/new-add-location/add-location';
 
 import './App.scss';
 
@@ -19,7 +20,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Switch>
-          <Route exact path='/' component={() => <Dashboard name={this.state.name} />}/>
+          <Route exact path='/' component={() => <AddLocation name={this.state.name} />}/>
         </Switch>
       </div>
     );
